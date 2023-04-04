@@ -1,9 +1,38 @@
 ---
+const NAV_HEIGHT = 'h-24';
 ---
 
-<header class="px-8 h-24">
+<header
+  id="navbar"
+  class={`px-8 ${NAV_HEIGHT} fixed overflow-hidden top-0 w-full bg-slate-900 duration-300`}
+>
   <div class="flex justify-between items-center h-full">
-    <div>logo</div>
+    <div id="logo">logo</div>
     <div>links</div>
   </div>
 </header>
+
+<script>
+  const NAV_HEIGHT = 'h-24';
+  const NAV_HEIGHT_MINI = 'h-20';
+  const THRESHOLD = 80;
+
+  window.onscroll = () => scrollFunction();
+
+  const scrollFunction = () => {
+    if (
+      document.body.scrollTop > THRESHOLD ||
+      document.documentElement.scrollTop > THRESHOLD
+    ) {
+      document.getElementById('navbar')!.classList.remove('px-10');
+      document.getElementById('navbar')!.classList.remove(NAV_HEIGHT);
+      document.getElementById('navbar')!.classList.add('px-8');
+      document.getElementById('navbar')!.classList.add(NAV_HEIGHT_MINI);
+    } else {
+      document.getElementById('navbar')!.classList.remove('px-8');
+      document.getElementById('navbar')!.classList.remove(NAV_HEIGHT_MINI);
+      document.getElementById('navbar')!.classList.add('px-10');
+      document.getElementById('navbar')!.classList.add(NAV_HEIGHT);
+    }
+  };
+</script>
