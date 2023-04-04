@@ -1,5 +1,6 @@
 ---
 import { Image } from '@astrojs/image/components';
+import Logo from 'public/logo.svg';
 
 const NAV_HEIGHT = 'h-24';
 ---
@@ -10,7 +11,7 @@ const NAV_HEIGHT = 'h-24';
 >
   <div class="flex justify-between items-center h-full">
     <div id="logo">
-      <Image src={`/logo.svg`} alt="logo" height={80} width={80} />
+      <Image src={Logo} alt="logo" height={80} width={80} />
     </div>
     <div>links</div>
   </div>

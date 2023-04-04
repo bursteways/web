@@ -1,20 +1,22 @@
 ---
+import { getImage } from '@astrojs/image';
 import Layout from 'layouts/Layout.astro';
 import Card from 'components/Card.astro';
+
+const { src } = await getImage({
+  src: import('public/bg.jpg'),
+  alt: 'My hero image',
+});
 ---
 
 <Layout title="Welcome to Bursteways Tech.">
-  <main class="bg">
+  <main
+    class="h-screen"
+    style={{
+      backgroundImage: `url(${src})`,
+      backgroundSize: 'cover',
+    }}
+  >
     <h1 class="text-white">hi</h1>
   </main>
 </Layout>
-
-<style>
-  main {
-    height: 100vh;
-  }
-  .bg {
-    background-image: url('/bg.jpg');
-    background-size: cover;
-  }
-</style>
