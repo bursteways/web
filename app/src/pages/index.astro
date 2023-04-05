@@ -2,72 +2,37 @@
 import { getImage } from '@astrojs/image';
 import Layout from 'layouts/Layout.astro';
 import Card from 'components/Card.astro';
-import { getAllPosts } from 'src/lib/api';
+
+import { getSiteSettings } from 'lib/api';
+
+const settings = await getSiteSettings();
 
 const { src } = await getImage({
   src: import('public/bg.jpg'),
   alt: 'My hero image',
 });
-
-const posts = await getAllPosts();
 ---
 
 <Layout title="Welcome to Bursteways Tech.">
   <div
-    class="h-[60vh]"
+    class="h-[80vh]"
     style={{
       backgroundImage: `url(${src})`,
       backgroundSize: 'cover',
     }}
   >
-    <div class="flex flex-col items-center justify-center h-full fade">
-      <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-slate-100">
-        Bursteways Tech.
-      </h1>
-      <p class="text-xl md:text-2xl lg:text-4xl text-slate-200">
-        Learn. Build. Awesome stuff.
-      </p>
+    <div class="grid grid-cols-2 gap-6 pl-6 pt-32">
+      <div class="flex flex-col justify-center h-full fade">
+        <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-slate-100">
+          Welcome to <br /> Bursteways Tech.
+        </h1>
+        <br />
+        <p class="text-xl md:text-2xl lg:text-4xl text-slate-200">
+          Learn. Build. Awesome stuff.
+        </p>
+      </div>
     </div>
   </div>
-  <section>
-    <pre>{JSON.stringify(posts)}</pre>
-  </section>
-  <section class="py-6 bg-zinc-900">
-    <div
-      class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 container mx-auto px-6"
-    >
-      <Card
-        href="/"
-        title="Card 1"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-      <Card
-        title="Card 2"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-      <Card
-        title="Card 3"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-      <Card
-        title="Card 4"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-      <Card
-        title="Card 5"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-      <Card
-        title="Card 6"
-        href="/"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-      />
-    </div>
-  </section>
 </Layout>
 
 <style is:global>
