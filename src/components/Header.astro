@@ -7,7 +7,7 @@ const NAV_HEIGHT = 'h-24';
 
 <header
   id="navbar"
-  class={`px-8 ${NAV_HEIGHT} fixed overflow-hidden top-0 w-full bg-slate-900 duration-300`}
+  class={`px-8 ${NAV_HEIGHT} fixed overflow-hidden top-0 w-full bg-transparent duration-300`}
 >
   <div class="flex justify-between items-center h-full">
     <div id="logo">
@@ -38,6 +38,7 @@ const NAV_HEIGHT = 'h-24';
       document.getElementById('navbar')!.classList.remove(NAV_HEIGHT_MINI);
       document.getElementById('navbar')!.classList.add('px-10');
       document.getElementById('navbar')!.classList.add(NAV_HEIGHT);
+      // bg-slate-900
     }
   };
 </script>

@@ -8,7 +8,9 @@ export interface Props {
 const { href, title, body } = Astro.props;
 ---
 
-<li class="link-card">
+<li
+  class="list-none flex p-6 bg-white rounded-lg hover:shadow-md ease-in-out duration-300 hover:scale-105"
+>
   <a href={href}>
     <h2>
       {title}
