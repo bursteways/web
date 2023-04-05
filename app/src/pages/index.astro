@@ -2,14 +2,14 @@
 import { getImage } from '@astrojs/image';
 import Layout from 'layouts/Layout.astro';
 import Card from 'components/Card.astro';
-import { getFirstBlogPost } from 'src/lib/api';
+import { getAllPosts } from 'src/lib/api';
 
 const { src } = await getImage({
   src: import('public/bg.jpg'),
   alt: 'My hero image',
 });
 
-const firstBlogPost = await getFirstBlogPost();
+const posts = await getAllPosts();
 ---
 
 <Layout title="Welcome to Bursteways Tech.">
@@ -30,7 +30,7 @@ const firstBlogPost = await getFirstBlogPost();
     </div>
   </div>
   <section>
-    <pre>{JSON.stringify(firstBlogPost)}</pre>
+    <pre>{JSON.stringify(posts)}</pre>
   </section>
   <section class="py-6 bg-zinc-900">
     <div

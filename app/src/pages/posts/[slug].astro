@@ -1,0 +1,29 @@
+---
+import { getAllPosts } from 'lib/api';
+import { Image } from '@astrojs/image/components';
+import { urlForImage } from 'lib/urlForImage';
+import PortableText from 'components/PortableText.astro';
+import PostLayout from 'layouts/PostLayout.astro';
+
+export const getStaticPaths = async () => {
+  const allBlogPosts = await getAllPosts();
+
+  return allBlogPosts.map((post: any) => ({
+    params: { slug: post.slug.current },
+    props: { ...post },
+  }));
+};
+
+const { title, mainImage, body } = Astro.props;
+---
+
+<PostLayout title={title}>
+  <h1>{title}</h1>
+  <Image
+    src={urlForImage(mainImage).url()}
+    alt="logo"
+    height={400}
+    width={1600}
+  />
+  <PortableText portableText={body} />
+</PostLayout>

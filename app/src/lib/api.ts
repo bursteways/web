@@ -1,7 +1,8 @@
-import { useSanityClient, groq } from 'astro-sanity';
+import { useSanityClient } from 'astro-sanity';
 
-export const getFirstBlogPost = async () => {
-  const query = groq`*[_type == "post"]`;
-  const [firstBlogPost] = await useSanityClient().fetch(query);
-  return firstBlogPost;
-};
+export async function getAllPosts() {
+  const client = useSanityClient();
+  const query = '*[_type == "post"]';
+  const posts = await client.fetch(query);
+  return posts;
+}
