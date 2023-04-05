@@ -5,15 +5,17 @@ import Card from 'components/Card.astro';
 
 import { getSiteSettings } from 'lib/api';
 
-const settings = await getSiteSettings();
-
 const { src } = await getImage({
   src: import('public/bg.jpg'),
   alt: 'My hero image',
 });
 ---
 
-<Layout title="Welcome to Bursteways Tech.">
+<Layout
+  seo={{
+    title: 'Welcome to Bursteways Tech.',
+  }}
+>
   <div
     class="h-[80vh]"
     style={{
