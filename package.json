@@ -1,8 +1,14 @@
 {
-  "name": "studio",
+  "name": "bursteways-tech",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/bursteways/web.git",
   "author": "bursteways <sburke0708@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"cd app && yarn run dev\" \"cd studio && yarn run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }
