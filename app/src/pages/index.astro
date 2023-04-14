@@ -1,15 +1,14 @@
 ---
-import {GetImageTransform} from "@astrojs/image/dist/lib/get-image";
 import { getImage } from '@astrojs/image';
-import Layout from 'layouts/Layout.astro';
+import HomeLayout from 'layouts/HomeLayout.astro';
 
-const { src } = await getImage(<GetImageTransform>{
+const { src } = await getImage({
   src: import('public/bg.jpg'),
   alt: 'My hero image',
 });
 ---
 
-<Layout
+<HomeLayout
   seo={{
     title: 'Welcome to Bursteways Tech.',
   }}
@@ -33,7 +32,7 @@ const { src } = await getImage(<GetImageTransform>{
       </div>
     </div>
   </div>
-</Layout>
+</HomeLayout>
 
 <style is:global>
   .fade {

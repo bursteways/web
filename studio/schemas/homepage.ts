@@ -1,14 +1,14 @@
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'page',
-  title: 'Pages',
+  name: 'homepage',
+  title: 'Homepage',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
+    }),
   ],
 })

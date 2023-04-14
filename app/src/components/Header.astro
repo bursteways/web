@@ -1,6 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
+import { getAllPages } from 'lib/api';
 import Logo from 'public/logo.svg';
+
+const allPages = await getAllPages();
 
 const NAV_HEIGHT = 'h-24';
 ---
@@ -15,7 +18,9 @@ const NAV_HEIGHT = 'h-24';
         <Image src={Logo} alt="logo" height={80} width={80} />
       </a>
     </div>
-    <div>links</div>
+    <div class="flex gap-3">
+      {allPages?.map((page: any) => <a href={`/${page.slug}`}>{page.title}</a>)}
+    </div>
   </div>
 </header>
 

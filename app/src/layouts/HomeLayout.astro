@@ -1,6 +1,6 @@
 ---
 import Header from 'components/Header.astro';
-import Layout from './Base.astro';
+import BaseLayout from './Base.astro';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
@@ -9,7 +9,7 @@ export interface Props {
 const { seo } = Astro.props as Props;
 ---
 
-<Layout seo={seo}>
+<BaseLayout seo={seo}>
   <Header />
   <slot />
-</Layout>
+</BaseLayout>
