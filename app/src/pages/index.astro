@@ -1,11 +1,9 @@
 ---
+import {GetImageTransform} from "@astrojs/image/dist/lib/get-image";
 import { getImage } from '@astrojs/image';
 import Layout from 'layouts/Layout.astro';
-import Card from 'components/Card.astro';
 
-import { getSiteSettings } from 'lib/api';
-
-const { src } = await getImage({
+const { src } = await getImage(<GetImageTransform>{
   src: import('public/bg.jpg'),
   alt: 'My hero image',
 });
@@ -54,7 +52,7 @@ const { src } = await getImage({
     0% {
       opacity: 0;
       filter: brightness(var(--base)) contrast(2);
-      box-shadow: 0;
+      box-shadow: none;
     }
   }
 </style>
