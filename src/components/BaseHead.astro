@@ -1,6 +1,5 @@
 ---
 import { SEO } from 'astro-seo';
-import { getSiteSettings } from '../lib/api';
 
 export interface Props {
   title?: string;
@@ -8,10 +7,10 @@ export interface Props {
   canonicalURL?: URL | string;
   image?: string;
 }
-const settings = await getSiteSettings();
-const title = Astro.props.title || settings.title;
-const description = Astro.props.description || settings.description;
-const canonicalURL = Astro.props.canonicalURL || settings.url;
+
+const title = "My Title"
+const description = "My Description"
+const canonicalURL = ""
 ---
 
 <head>
