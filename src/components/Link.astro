@@ -1,25 +1,30 @@
 ---
+import clsx from 'clsx';
 import { Image } from '@astrojs/image/components';
+
+type Variants = 'outlined' | 'contained'
+
 interface IProps {
   text: string;
   href: string;
-  style: 'primary' | 'secondary';
+  variant: Variant;
   icon?: {
     name: string;
     side: 'left' | 'right';
   };
-  isFilled?: boolean;
-  isBorderVisible?: boolean;
   classes?: string;
+}
+
+const variantStyle: { [key in Variant]: string } = {
+  contained: 'bg-blue-500 text-white',
+  outlined: 'border border-blue-500 text-blue-500',
 }
 
 const {
   text,
   href,
-  style,
+  variant,
   icon,
-  isFilled = true,
-  isBorderVisible = false,
   classes,
   ...rest
 } = Astro.props as IProps;
@@ -27,16 +32,8 @@ const {
 
 <a
   href={href}
-  class:list={[
-    'link',
-    classes,
-    style,
-    {
-      filled: isFilled,
-      bordered: isBorderVisible,
-    },
-  ]}
-  {...rest}
+  class={clsx('rounded px-2 py-1', variantStyle[variant], classes)}
+{...rest}
 >
   <span>{text}</span>
 </a>
